@@ -1,0 +1,33 @@
+.movieRow {
+  padding: 0 1rem;
+}
+
+.movieRow h2 {
+  text-transform: capitalize;
+  padding-left: 1rem;
+}
+
+.movieRow--listarea {
+  overflow-x: hidden;
+  width: 9999px;
+}
+
+.movieRow--item {
+  display: inline-block;
+  width: 10rem;
+  cursor: pointer;
+}
+
+.movieRow--item img {
+  width: 100%;
+  transform: scale(0.9);
+  transition: all 200ms ease;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.movieRow--item img:hover {
+  transform: scale(1);
+  opacity: 1;
+  border-color: coral;
+}
