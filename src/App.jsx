@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import MovieRow from "./components/MovieRow/index";
-import MovieFeature from "./components/MovieFeature";
+
 import { homeList, getFeature } from "./api/Tmdb";
 import { randomArray } from "./helpers/index";
+
+import MovieRow from "./components/MovieRow/index";
+import MovieFeature from "./components/MovieFeature";
+import Header from "./components/Header";
 
 export default () => {
   const [list, setList] = useState([]);
   const [feature, setFeature] = useState(null);
+  const [headerDark, setHeaderDark] = useState(false);
 
   useEffect(() => {
     const getAll = async () => {
@@ -27,10 +31,25 @@ export default () => {
     getAll();
   }, []);
 
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY >= 100) {
+        setHeaderDark(true);
+      } else {
+        setHeaderDark(false);
+      }
+    };
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      window.addEventListener("scroll", scrollListener);
+    };
+  }, []);
+
   return (
     <div className="page">
+      <Header dark={headerDark} />
       {feature && <MovieFeature item={feature} />}
-      <section className="list">
+      <section className="page--list container">
         {list.map((item, key) => (
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}

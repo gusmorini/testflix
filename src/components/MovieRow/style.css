@@ -1,20 +1,15 @@
-.movieRow {
-  padding: 0 1rem;
-}
-
 .movieRow h2 {
   text-transform: capitalize;
-  padding-left: 1rem;
 }
 
 .movieRow--listarea {
   overflow-x: hidden;
-  width: 9999px;
+  /* width: 9999px; */
+  transition: all ease-in-out 300ms;
 }
 
 .movieRow--item {
   display: inline-block;
-  width: 10rem;
   cursor: pointer;
 }
 
@@ -30,4 +25,22 @@
   transform: scale(1);
   opacity: 1;
   border-color: coral;
+}
+
+.movieRow--title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movieRow--buttons button {
+  margin-left: 0.5rem;
+  border: none;
+  background: #333;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }

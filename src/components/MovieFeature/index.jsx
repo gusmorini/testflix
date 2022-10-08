@@ -14,8 +14,8 @@ const MovieFeature = ({ item }) => {
   }
   return (
     <div className="feature" style={{ backgroundImage: `url(${url_image})` }}>
-      <div className="feature--box">
-        <h1>{item.name || item.title}</h1>
+      <div className="feature--box container">
+        <h1 className="feature--title">{item.name || item.title}</h1>
         <div className="feature--info">
           <p className="info--relevance">{vote}% Relevância</p>
           <p className="info--year">{date}</p>
@@ -28,8 +28,16 @@ const MovieFeature = ({ item }) => {
           </p>
         </div>
         <p className="feature--overview">
-          {limitText(item.overview || "--- sem descrição --- ", 350)}
+          {limitText(item.overview || "...", 290)}
         </p>
+        <div className="feature--buttons">
+          <a className="play" href="#">
+            assistir
+          </a>
+          <a className="mylist" href="#">
+            minha lista
+          </a>
+        </div>
         <div className="feature--genres">
           <strong>Gêneros: </strong>
           <span>{genres.join(", ")}</span>
