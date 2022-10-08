@@ -8,6 +8,10 @@ const MovieFeature = ({ item }) => {
   const vote = ((item.vote_average * 1000) / 100).toFixed(0);
   const initial_date = item.first_air_date || item.release_date;
   const date = initial_date ? initial_date.split("-")[0] : "";
+  const genres = [];
+  for (let n in item.genres) {
+    genres.push(item.genres[n].name);
+  }
   return (
     <div className="feature" style={{ backgroundImage: `url(${url_image})` }}>
       <div className="feature--box">
@@ -23,11 +27,12 @@ const MovieFeature = ({ item }) => {
               : `${item.runtime} min`}
           </p>
         </div>
-        <p className="feature--overview">{limitText(item.overview, 350)}</p>
+        <p className="feature--overview">
+          {limitText(item.overview || "--- sem descrição --- ", 350)}
+        </p>
         <div className="feature--genres">
-          {item.genres.map((item, key) => (
-            <span key={key}>{item.name}</span>
-          ))}
+          <strong>Gêneros: </strong>
+          <span>{genres.join(", ")}</span>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ body {
   margin-top: -50px;
 }
 
-@media (min-height: 640px) {
+@media (min-height: 700px) {
   .list {
     margin-top: -100px;
   }
