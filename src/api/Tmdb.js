@@ -21,6 +21,15 @@ const getDataGenrers = async () => {
   return await Promise.all(promises);
 };
 
+export const getFeature = async (id, type) => {
+  switch (type) {
+    case "movies":
+      return await getData(`/movie/${id}`);
+    case "series":
+      return await getData(`/tv/${id}`);
+  }
+};
+
 export const homeList = async () => {
   const custom = [
     {
@@ -47,5 +56,7 @@ export const homeList = async () => {
 
   const genres = await getDataGenrers();
 
-  return custom.concat(genres);
+  const result = custom.concat(genres);
+
+  return result;
 };
