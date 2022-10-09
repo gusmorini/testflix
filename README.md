@@ -5,7 +5,11 @@ requisitos:
 - nodejs
 - npm
 
-Dentro da pasta do projeto rode: <strong>npm install</strong> e <strong>npm run dev</strong>
+Dentro da pasta do projeto:
+
+- duplique o arquivo .env.example e renomeia para .env.
+- configure a chave da api em VITE_API_KEY
+- comandos: <strong>npm install</strong> e <strong>npm run dev</strong>
 
 ---
 
