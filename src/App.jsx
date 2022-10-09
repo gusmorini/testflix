@@ -7,6 +7,7 @@ import { randomArray } from "./helpers/index";
 import MovieRow from "./components/MovieRow/index";
 import MovieFeature from "./components/MovieFeature";
 import Header from "./components/Header";
+import Loader from "./components/Loader";
 
 export default () => {
   const [list, setList] = useState([]);
@@ -54,6 +55,7 @@ export default () => {
           <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
+      {list.length <= 0 && <Loader />}
     </div>
   );
 };
