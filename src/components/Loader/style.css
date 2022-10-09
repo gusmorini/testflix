@@ -1,0 +1,42 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.loader div {
+  text-align: center;
+}
+
+.loader span {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.loader p {
+  width: 50px;
+  height: 50px;
+  border: 6px solid white;
+  border-bottom-color: tomato;
+  border-radius: 50%;
+  animation: rotate 1s infinite;
+  margin: 0 auto;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
