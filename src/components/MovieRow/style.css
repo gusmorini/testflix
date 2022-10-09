@@ -4,7 +4,6 @@
 
 .movieRow--listarea {
   overflow-x: hidden;
-  /* width: 9999px; */
   transition: all ease 500ms;
 }
 
@@ -28,19 +27,40 @@
 }
 
 .movieRow--title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem 0;
+  font-weight: bold;
 }
 
-.movieRow--buttons button {
-  margin-left: 0.5rem;
+.movieRow--arrow {
   border: none;
-  background: #333;
+  background: rgba(0, 0, 0, 0.8);
   width: 30px;
-  height: 30px;
+  height: 272px;
   line-height: 30px;
   color: white;
-  border-radius: 50%;
   cursor: pointer;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all ease 300ms;
+}
+
+.movieRow--arrow img {
+  width: 100%;
+}
+
+.arrow--left {
+  position: absolute;
+  left: 0;
+}
+
+.arrow--right {
+  position: absolute;
+  right: 0;
+}
+
+.movieRow:hover .movieRow--arrow {
+  opacity: 1;
 }

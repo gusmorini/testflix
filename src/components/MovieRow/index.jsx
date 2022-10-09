@@ -25,35 +25,32 @@ const MovieRow = ({ title, items }) => {
     }
   };
 
-  const handleLeft = (range = rangeDefault) => {
-    let x = scrollX + range;
+  const handleLeft = () => {
+    let x = scrollX + rangeDefault;
     if (x > 0) {
       x = 0;
     }
     setScrollX(x);
   };
 
-  const handleRight = (range = rangeDefault) => {
-    let x = scrollX - range;
+  const handleRight = () => {
+    let x = scrollX - rangeDefault;
     const limit = screenW - listW;
     if (limit > x) {
-      x = limit - 40;
+      x = limit - 60;
     }
     setScrollX(x);
-
-    console.log("LIMIT ", limit);
-    console.log("X ", x);
-    console.log("SCREEN W ", screenW);
   };
 
   return (
     <div className="movieRow">
-      <div className="movieRow--title">
-        <h2>{title}</h2>
-        <div className="movieRow--buttons">
-          <button onClick={handleLeft}>⟨</button>
-          <button onClick={handleRight}> ⟩ </button>
-        </div>
+      <p className="movieRow--title">{title}</p>
+
+      <div className="movieRow--arrow arrow--left" onClick={handleLeft}>
+        <img src="/img/chevron-left.png" alt="" />
+      </div>
+      <div className="movieRow--arrow arrow--right" onClick={handleRight}>
+        <img src="/img/chevron-right.png" alt="" />
       </div>
       <div
         className="movieRow--listarea"
@@ -61,7 +58,7 @@ const MovieRow = ({ title, items }) => {
           marginLeft: scrollX,
           width: listW,
         }}
-        onTouchMove={handleDrag}
+        // onTouchMove={handleDrag}
       >
         {items.results.length > 0 &&
           items.results.map((item, key) => (

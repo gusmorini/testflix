@@ -5,10 +5,12 @@ const Header = ({ dark = false }) => {
   return (
     <header className={dark ? "dark" : ""}>
       <div className="header--content container">
-        <h1>testflix</h1>
+        <a className="logo" href="/">
+          testflix
+        </a>
         <div className="header--user">
-          <h2>user</h2>
-          <img src="/img/user.png" alt="" />
+          <a href="#">user</a>
+          <img src="/img/profile1.png" alt="" />
         </div>
       </div>
     </header>

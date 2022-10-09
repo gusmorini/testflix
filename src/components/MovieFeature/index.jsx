@@ -4,7 +4,6 @@ import { limitText } from "../../helpers/index";
 
 const MovieFeature = ({ item }) => {
   const url_image = "https://image.tmdb.org/t/p/original" + item.backdrop_path;
-  console.log(item);
   const vote = ((item.vote_average * 1000) / 100).toFixed(0);
   const initial_date = item.first_air_date || item.release_date;
   const date = initial_date ? initial_date.split("-")[0] : "";
@@ -12,6 +11,9 @@ const MovieFeature = ({ item }) => {
   for (let n in item.genres) {
     genres.push(item.genres[n].name);
   }
+
+  const cont = window.innerHeight <= 360 ? 100 : 360;
+
   return (
     <div className="feature" style={{ backgroundImage: `url(${url_image})` }}>
       <div className="feature--box container">
@@ -28,7 +30,7 @@ const MovieFeature = ({ item }) => {
           </p>
         </div>
         <p className="feature--overview">
-          {limitText(item.overview || "...", 290)}
+          {limitText(item.overview || "...", cont)}
         </p>
         <div className="feature--buttons">
           <a className="play" href="#">
