@@ -6,11 +6,26 @@ const MovieRow = ({ title, items }) => {
 
   const [scrollX, setScrollX] = useState(0);
 
-  const range = Math.round(window.innerWidth / 2);
   const itemW = 180;
   const listW = items.results.length * itemW;
+  const rangeDefault = Math.round(window.innerWidth / 1.2);
+  const screenW = Math.round(window.innerWidth);
 
-  const handleLeft = () => {
+  const handleDrag = (e) => {
+    console.log("ELEMENT --- ", e.changedTouches[0]);
+    const screenM = e.changedTouches[0].clientX;
+    let x = scrollX;
+    console.log("SCREEN X", screenM);
+    console.log("SCREEN W", screenW);
+    console.log("SCREEN /2 ", screenW / 2);
+    if (screenM < screenW / 2) {
+      handleRight(20);
+    } else {
+      handleLeft(20);
+    }
+  };
+
+  const handleLeft = (range = rangeDefault) => {
     let x = scrollX + range;
     if (x > 0) {
       x = 0;
@@ -18,15 +33,17 @@ const MovieRow = ({ title, items }) => {
     setScrollX(x);
   };
 
-  const handleRight = () => {
+  const handleRight = (range = rangeDefault) => {
     let x = scrollX - range;
-    const screenW = Math.round(window.innerHeight);
     const limit = screenW - listW;
-    console.log(x, screenW, listW, limit);
     if (limit > x) {
-      x = limit - 200;
+      x = limit - 40;
     }
     setScrollX(x);
+
+    console.log("LIMIT ", limit);
+    console.log("X ", x);
+    console.log("SCREEN W ", screenW);
   };
 
   return (
@@ -41,17 +58,14 @@ const MovieRow = ({ title, items }) => {
       <div
         className="movieRow--listarea"
         style={{
-          marginLeft: `${scrollX}px`,
-          width: `${listW}px`,
+          marginLeft: scrollX,
+          width: listW,
         }}
+        onTouchMove={handleDrag}
       >
         {items.results.length > 0 &&
           items.results.map((item, key) => (
-            <div
-              key={key}
-              className="movieRow--item"
-              style={{ width: `${itemW}px` }}
-            >
+            <div key={key} className="movieRow--item" style={{ width: itemW }}>
               <img
                 src={base_image + item.poster_path}
                 alt={item.original_title}
