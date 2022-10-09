@@ -7,7 +7,7 @@ requisitos:
 
 Dentro da pasta do projeto:
 
-- duplique o arquivo .env.example e renomeie para .env.
+- duplique o arquivo .env.example e renomeie para .env
 - configure a chave da api em VITE_API_KEY
 - comandos: <strong>npm install</strong> e <strong>npm run dev</strong>
 
