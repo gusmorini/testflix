@@ -8,6 +8,7 @@ import MovieRow from "./components/MovieRow/index";
 import MovieFeature from "./components/MovieFeature";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
+import Footer from "./components/Footer";
 
 export default () => {
   const [list, setList] = useState([]);
@@ -56,6 +57,7 @@ export default () => {
         ))}
       </section>
       {list.length <= 0 && <Loader />}
+      <Footer />
     </div>
   );
 };

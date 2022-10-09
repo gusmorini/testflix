@@ -1,0 +1,26 @@
+.footer {
+  font-size: 0.8rem;
+  padding-bottom: 2rem;
+  text-align: right;
+  opacity: 0.8;
+}
+
+.footer hr {
+  opacity: 0.1;
+}
+
+.footer p {
+  padding-top: 2rem;
+}
+
+.footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 0.2rem;
+  transition: all ease 300ms;
+}
+
+.footer a:hover {
+  color: tomato;
+}
