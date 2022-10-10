@@ -15,21 +15,24 @@ export default () => {
   const [feature, setFeature] = useState(null);
   const [headerDark, setHeaderDark] = useState(false);
 
+  /** get all items */
+  const getAll = async () => {
+    // list
+    const list = await homeList();
+    setList(list);
+    // feature
+    const randomFeature = randomArray(list);
+    const randomFeatureItem = randomArray(randomFeature.items.results);
+    getFeatureItem(randomFeatureItem);
+  };
+
+  /** get feature */
+  const getFeatureItem = async (item) => {
+    const data = await getFeature(item);
+    setFeature(data);
+  };
+
   useEffect(() => {
-    const getAll = async () => {
-      // list
-      const list = await homeList();
-      // console.log("LIST ---- ", list);
-      setList(list);
-      // feature
-      const filter = list.filter(
-        (item) => item.slug == "series" || item.slug == "movies"
-      );
-      const randomFeature = randomArray(filter);
-      const randomFeatureItem = randomArray(randomFeature.items.results);
-      const data = await getFeature(randomFeatureItem.id, randomFeature.slug);
-      setFeature(data);
-    };
     getAll();
   }, []);
 
@@ -53,7 +56,12 @@ export default () => {
       {feature && <MovieFeature item={feature} />}
       <section className="page--list container">
         {list.map((item, key) => (
-          <MovieRow key={key} title={item.title} items={item.items} />
+          <MovieRow
+            key={key}
+            title={item.title}
+            items={item.items}
+            getFeatureItem={getFeatureItem}
+          />
         ))}
       </section>
       {list.length <= 0 && <Loader />}

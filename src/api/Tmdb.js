@@ -1,9 +1,10 @@
 const KEY = import.meta.env.VITE_API_KEY;
 const API_BASE = "https://api.themoviedb.org/3";
-const ADDONS = `?api_key=${KEY}&language=pt-BR`;
+const options = ["language=pt-BR"];
+const ADDONS = `?api_key=${KEY}&${options.join("&")}`;
 
-const getData = async (endpoint, query = "") => {
-  return fetch(API_BASE + endpoint + ADDONS + query)
+const getData = async (endpoint, query = []) => {
+  return fetch(API_BASE + endpoint + ADDONS + "&" + query.join("&"))
     .then((resp) => resp.json())
     .then((data) => data)
     .catch((err) => err);
@@ -15,19 +16,18 @@ const getDataGenrers = async () => {
     return {
       slug: item.name,
       title: item.name,
-      items: await getData("/discover/movie", `&with_genres=${item.id}`),
+      items: await getData("/discover/movie", [`with_genres=${item.id}`]),
     };
   });
   return await Promise.all(promises);
 };
 
-export const getFeature = async (id, type) => {
-  switch (type) {
-    case "movies":
-      return await getData(`/movie/${id}`);
-    case "series":
-      return await getData(`/tv/${id}`);
+export const getFeature = async (item) => {
+  let data = await getData(`/movie/${item.id}`);
+  if (!data.original_title || data.original_title !== item.original_title) {
+    data = await getData("/tv/" + item.id);
   }
+  return data;
 };
 
 export const homeList = async () => {

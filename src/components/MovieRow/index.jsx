@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 
-const MovieRow = ({ title, items }) => {
+const MovieRow = ({ title, items, getFeatureItem }) => {
   const base_image = "https://image.tmdb.org/t/p/w200";
 
   const [scrollX, setScrollX] = useState(0);
@@ -66,6 +66,7 @@ const MovieRow = ({ title, items }) => {
               <img
                 src={base_image + item.poster_path}
                 alt={item.original_title}
+                onClick={() => getFeatureItem(item)}
               />
             </div>
           ))}
