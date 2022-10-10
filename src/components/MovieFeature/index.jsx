@@ -15,34 +15,41 @@ const MovieFeature = ({ item }) => {
   const cont = window.innerHeight <= 360 ? 100 : 360;
 
   return (
-    <div className="feature" style={{ backgroundImage: `url(${url_image})` }}>
-      <div className="feature--box container">
-        <h1 className="feature--title">{item.name || item.title}</h1>
-        <div className="feature--info">
-          <p className="info--relevance">{vote}% Relevância</p>
-          <p className="info--year">{date}</p>
-          <p className="info--duration">
-            {item.number_of_seasons
-              ? `${item.number_of_seasons} ${
-                  item.number_of_seasons > 1 ? "temporadas" : "temporada"
-                }`
-              : `${item.runtime} min`}
+    <div className="feature">
+      <div
+        className="feature--cover"
+        style={{ backgroundImage: `url(${url_image})` }}
+      ></div>
+
+      <div className="container">
+        <div className="feature--box">
+          <h1 className="feature--title">{item.name || item.title}</h1>
+          <div className="feature--info">
+            <p className="info--relevance">{vote}% Relevância</p>
+            <p className="info--year">{date}</p>
+            <p className="info--duration">
+              {item.number_of_seasons
+                ? `${item.number_of_seasons} ${
+                    item.number_of_seasons > 1 ? "temporadas" : "temporada"
+                  }`
+                : `${item.runtime} min`}
+            </p>
+          </div>
+          <p className="feature--overview">
+            {limitText(item.overview || "...", cont)}
           </p>
-        </div>
-        <p className="feature--overview">
-          {limitText(item.overview || "...", cont)}
-        </p>
-        <div className="feature--buttons">
-          <a className="play" href="#">
-            assistir
-          </a>
-          <a className="mylist" href="#">
-            minha lista
-          </a>
-        </div>
-        <div className="feature--genres">
-          <strong>Gêneros: </strong>
-          <span>{genres.join(", ")}</span>
+          <div className="feature--buttons">
+            <a className="play" href="#">
+              assistir
+            </a>
+            <a className="mylist" href="#">
+              minha lista
+            </a>
+          </div>
+          <div className="feature--genres">
+            <strong>Gêneros: </strong>
+            <span>{genres.join(", ")}</span>
+          </div>
         </div>
       </div>
     </div>
