@@ -27,15 +27,3 @@ body {
     padding: 0 2rem;
   }
 }
-
-section.page--list {
-  /* background: linear-gradient(to bottom, #000 1%, transparent) no-repeat; */
-  transform: translateY(-50px);
-  overflow-x: hidden;
-}
-
-@media (min-height: 700px) {
-  section.page--list {
-    transform: translateY(-150px);
-  }
-}
