@@ -1,0 +1,73 @@
+.about--hero {
+  background-size: cover;
+  background-position: top center;
+  height: 100vh;
+  width: 100%;
+  z-index: 0;
+}
+
+.about--hero::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to top, #000 1%, transparent);
+  width: inherit;
+  height: inherit;
+  top: 0;
+  left: 0;
+}
+
+.about {
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.about .poster {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.about .content {
+}
+
+.about .title {
+  margin-bottom: 0.5rem;
+}
+
+.about .original {
+  margin-bottom: 2rem;
+  color: aquamarine;
+  font-style: italic;
+}
+
+.about .overview {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.about .genres {
+  color: bisque;
+  font-style: italic;
+}
+
+@media (min-width: 640px) {
+  .about {
+    flex-direction: row;
+  }
+  .about .poster {
+    margin: 0 auto;
+    margin-right: 2rem;
+    max-height: 400px;
+  }
+}
+
+/* @media (min-height: 360px) {
+  .about {
+    transform: translateY(-10rem);
+  }
+} */

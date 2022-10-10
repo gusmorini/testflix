@@ -22,10 +22,10 @@ const getDataGenrers = async () => {
   return await Promise.all(promises);
 };
 
-export const getFeature = async (item) => {
-  let data = await getData(`/movie/${item.id}`);
-  if (!data.original_title || data.original_title !== item.original_title) {
-    data = await getData("/tv/" + item.id);
+export const getFeature = async (id, title) => {
+  let data = await getData(`/movie/${id}`);
+  if (!data.original_title || data.original_title !== title) {
+    data = await getData("/tv/" + id);
   }
   return data;
 };

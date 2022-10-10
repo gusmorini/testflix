@@ -5,6 +5,9 @@ import MovieRow from "../../components/MovieRow";
 import MovieFeature from "../../components/MovieFeature";
 import Loader from "../../components/Loader";
 
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
 import { homeList, getFeature } from "../../api/Tmdb";
 import { randomArray } from "../../helpers/index";
 
@@ -20,12 +23,15 @@ const Home = () => {
     // feature
     const randomFeature = randomArray(list);
     const randomFeatureItem = randomArray(randomFeature.items.results);
-    getFeatureItem(randomFeatureItem);
+    getFeatureItem(
+      randomFeatureItem.id,
+      randomFeatureItem.original_title || randomFeatureItem.original_name
+    );
   };
 
   /** get feature */
-  const getFeatureItem = async (item) => {
-    const data = await getFeature(item);
+  const getFeatureItem = async (id, title) => {
+    const data = await getFeature(id, title);
     setFeature(data);
   };
 
@@ -35,6 +41,7 @@ const Home = () => {
 
   return (
     <div>
+      <Header />
       {feature && <MovieFeature item={feature} />}
       <section className="page--list container">
         {list.map((item, key) => (
@@ -47,6 +54,7 @@ const Home = () => {
         ))}
       </section>
       {list.length <= 0 && <Loader />}
+      <Footer />
     </div>
   );
 };

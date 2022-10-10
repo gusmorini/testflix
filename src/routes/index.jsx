@@ -1,5 +1,10 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -8,15 +13,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <Home />,
   },
   {
-    path: "/about",
+    path: "/about/:id/:title",
     element: <About />,
   },
 ]);
 
-const Routes = () => {
+const MyRoutes = () => {
   return <RouterProvider router={router} />;
 };
 
-export default Routes;
+export default MyRoutes;
