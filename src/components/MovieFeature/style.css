@@ -9,11 +9,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  z-index: -1;
-  position: absolute;
+  z-index: 0;
+  /* position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  right: 0; */
   height: 100vh;
 }
 
@@ -25,6 +25,7 @@
   height: inherit;
   top: 0;
   left: 0;
+  z-index: inherit;
 }
 
 .feature--cover::before {
@@ -35,52 +36,29 @@
   height: inherit;
   top: 0;
   left: 0;
+  z-index: inherit;
 }
 
 .feature--box {
-  max-width: 400px;
+  width: 600px;
+  max-width: 90%;
   min-width: 300px;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 6rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 40%;
 }
 
 @media (min-height: 700px) or (min-width: 400px) {
   .feature--box {
-    justify-content: center;
+    /* justify-content: center; */
   }
 }
 
-.feature--title {
-  margin-bottom: 1rem;
-  font-size: 1.4rem;
-}
-
-.feature--info {
-  margin-bottom: 1rem;
-  font-weight: bold;
-}
-
-.feature--info p {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-
-.feature--info .info--relevance {
-  color: rgb(58 175 87);
-  font-weight: bold;
-}
-
 .feature--overview {
-  opacity: 0.8;
-}
-
-.feature--genres {
-  font-style: italic;
-  color: burlywood;
-  font-size: 14px;
+  /* max-width: 70%; */
 }
 
 .feature--buttons {
