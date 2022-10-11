@@ -31,8 +31,8 @@ const Home = () => {
 
   /** get feature */
   const getFeatureItem = async (id, title) => {
-    const data = await getFeature(id, title);
-    setFeature(data);
+    const { feature } = await getFeature(id, title);
+    setFeature(feature);
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Home = () => {
           />
         ))}
       </section>
-      {list.length <= 0 && <Loader />}
+      {list.length <= 0 && !feature && <Loader />}
       <Footer />
     </div>
   );
