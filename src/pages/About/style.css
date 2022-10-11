@@ -9,7 +9,7 @@
 .about--hero::after {
   content: "";
   position: absolute;
-  background: linear-gradient(to top, #000 1%, transparent);
+  background: linear-gradient(to top, #000 20%, transparent);
   width: inherit;
   height: inherit;
   top: 0;
@@ -24,12 +24,11 @@
 }
 
 .about .poster {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 300px;
-  height: auto;
   margin: 0 auto;
   margin-bottom: 2rem;
+  height: 300px;
 }
 
 .about .content {
@@ -46,7 +45,6 @@
 }
 
 .about .overview {
-  font-size: 1.4rem;
   margin-bottom: 2rem;
 }
 
@@ -62,7 +60,6 @@
   .about .poster {
     margin: 0 auto;
     margin-right: 2rem;
-    max-height: 400px;
   }
 }
 

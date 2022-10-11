@@ -4,14 +4,11 @@ import "./style.css";
 
 import { getFeature } from "../../api/Tmdb";
 
-import MovieFeature from "../../components/MovieFeature";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 const About = () => {
   const { id, title } = useParams();
-  console.log(id, title);
-
   const [item, setItem] = useState({});
   const [background, setBackground] = useState("");
   const [poster, setPoster] = useState("");
