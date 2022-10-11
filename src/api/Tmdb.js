@@ -1,4 +1,4 @@
-const KEY = import.meta.env.VITE_API_KEY;
+const KEY = import.meta.env.VITE_API_KEY || "89cf7012bc836682d0801fbc799b312b";
 const API_BASE = "https://api.themoviedb.org/3";
 const options = ["language=pt-BR"];
 const ADDONS = `?api_key=${KEY}&${options.join("&")}`;
