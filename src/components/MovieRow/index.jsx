@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
 const MovieRow = ({ title, items, getFeatureItem }) => {
@@ -64,8 +63,8 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
         {items.results.length > 0 &&
           items.results.map((item, key) => (
             <div key={key} className="movieRow--item" style={{ width: itemW }}>
-              <Link
-                to={`about/${item.id}/${
+              <a
+                href={`about/${item.id}/${
                   item.original_title || item.original_name
                 }`}
               >
@@ -74,7 +73,7 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
                   alt={item.original_title}
                   // onClick={() => getFeatureItem(item)}
                 />
-              </Link>
+              </a>
             </div>
           ))}
       </div>
