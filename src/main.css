@@ -15,12 +15,18 @@ body {
 body {
   background: #000;
   color: #e1e1e1;
-  z-index: 0;
+  overflow-y: auto;
 }
 
 .container {
-  width: 90%;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
-  z-index: 1;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
+  }
 }

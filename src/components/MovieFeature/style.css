@@ -9,7 +9,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  z-index: 0;
   /* position: absolute;
   top: 0;
   left: 0;
@@ -25,7 +24,6 @@
   height: inherit;
   top: 0;
   left: 0;
-  z-index: inherit;
 }
 
 .feature--cover::before {
@@ -36,7 +34,6 @@
   height: inherit;
   top: 0;
   left: 0;
-  z-index: inherit;
 }
 
 .feature--box {

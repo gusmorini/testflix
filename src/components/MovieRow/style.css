@@ -1,3 +1,6 @@
+.movieRow {
+}
+
 .movieRow--listarea {
   overflow-x: hidden;
   transition: all ease 500ms;
@@ -28,12 +31,10 @@
 .movieRow--arrow {
   border: none;
   background: rgba(0, 0, 0, 0.8);
-  width: 30px;
+  width: 3rem;
   height: 272px;
-  line-height: 30px;
-  color: white;
   cursor: pointer;
-  z-index: 200;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
