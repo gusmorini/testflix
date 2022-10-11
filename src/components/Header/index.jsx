@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
 const Header = () => {
@@ -22,9 +21,9 @@ const Header = () => {
   return (
     <header className={headerDark ? "dark" : ""}>
       <div className="header--content container">
-        <Link to="/" className="logo">
+        <a href="/" className="logo">
           testflix
-        </Link>
+        </a>
         <div className="header--user">
           <a href="#">user</a>
           <img src="/img/profile1.png" alt="" />

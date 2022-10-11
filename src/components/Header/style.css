@@ -24,6 +24,11 @@ a.logo {
   text-transform: uppercase;
   font-size: 1.4rem;
   font-weight: bold;
+  transition: ease 200ms;
+}
+
+a.logo:hover {
+  color: rgb(209, 50, 22);
 }
 
 .header--user {
