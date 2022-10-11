@@ -1,0 +1,29 @@
+.similar .list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+}
+
+.similar .title {
+  text-transform: capitalize;
+  margin: 2rem 0;
+  color: turquoise;
+}
+
+.similar .title::before {
+  content: "✔";
+  margin: 0 1rem;
+}
+
+.similar .item {
+  transform: scale(0.9);
+  transition: all ease 200ms;
+}
+
+.similar .item img {
+  width: 100%;
+  display: block;
+}
+
+.similar .item:hover {
+  transform: scale(1);
+}
