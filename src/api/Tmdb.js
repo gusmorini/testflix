@@ -22,16 +22,39 @@ const getDataGenrers = async () => {
   return await Promise.all(promises);
 };
 
+export const getSimilar = async (id, type = "movie") => {
+  return await getData(`/${type}/${id}/similar`);
+};
+
+export const getRecommendations = async (id, type = "movie") => {
+  return await getData(`/${type}/${id}/recommendations`);
+};
+
 export const getFeature = async (id, title) => {
-  let data = await getData(`/movie/${id}`);
-  if (!data.original_title || data.original_title !== title) {
-    data = await getData("/tv/" + id);
+  let type = "movie";
+  let feature = await getData(`/${type}/${id}`);
+  if (!feature.original_title || feature.original_title !== title) {
+    type = "tv";
+    feature = await getData(`/${type}/${id}`);
   }
-  return data;
+
+  feature.slug = type;
+
+  return { feature };
 };
 
 export const homeList = async () => {
   const custom = [
+    {
+      slug: "toprated_tv",
+      title: "séries em alta",
+      items: await getData("/tv/top_rated"),
+    },
+    {
+      slug: "toprated_movie",
+      title: "filmes em alta",
+      items: await getData("/movie/top_rated"),
+    },
     {
       slug: "series",
       title: "séries",
@@ -46,11 +69,6 @@ export const homeList = async () => {
       slug: "trending",
       title: "recomendados para você",
       items: await getData("/trending/all/week"),
-    },
-    {
-      slug: "toprated",
-      title: "em alta",
-      items: await getData("/movie/top_rated"),
     },
   ];
 
