@@ -9,24 +9,18 @@
 
 html,
 body {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 body {
   background: #000;
   color: #e1e1e1;
+  z-index: 0;
 }
 
 .container {
-  padding: 0 1rem;
-  width: 100%;
+  width: 90%;
   height: 100%;
-  max-width: 1024px;
   margin: 0 auto;
-}
-
-@media (min-width: 640px) and (min-height: 640px) {
-  .container {
-    padding: 0 2rem;
-  }
+  z-index: 1;
 }
