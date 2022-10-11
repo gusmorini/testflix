@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 const MovieRow = ({ title, items, getFeatureItem }) => {
@@ -6,23 +6,33 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
 
   const [scrollX, setScrollX] = useState(0);
 
-  const itemW = 180;
-  const listW = items.results.length * itemW;
-  const rangeDefault = Math.round(window.innerWidth / 1.2);
-  const screenW = Math.round(window.innerWidth);
+  const [itemW] = useState(180);
+  const [listW] = useState(items.results.length * itemW);
 
-  const handleDrag = (e) => {
-    console.log("ELEMENT --- ", e.changedTouches[0]);
-    const screenM = e.changedTouches[0].clientX;
+  // const screenW = document.querySelector(".movieRow").clientWidth;
+
+  // const [screenW, setScreenW] = useState(
+  //   document.querySelector("#movieRow").clientWidth
+  // );
+  // const [rangeDefault, setRangeDefault] = useState(screenW / 2);
+
+  const handleArrow = (arrow = "left") => {
+    const screenW = document.querySelector(".movieRow").clientWidth;
+    const range = screenW / 2;
+
     let x = scrollX;
-    console.log("SCREEN X", screenM);
-    console.log("SCREEN W", screenW);
-    console.log("SCREEN /2 ", screenW / 2);
-    if (screenM < screenW / 2) {
-      handleRight(20);
+
+    if (arrow == "left") {
+      x += range;
+      if (x > 0) x = 0;
     } else {
-      handleLeft(20);
+      x -= range;
+      const listW = document.querySelector(".movieRow--listarea").clientWidth;
+      const limit = screenW - listW;
+      if (limit > x) x = limit;
     }
+
+    setScrollX(x);
   };
 
   const handleLeft = () => {
@@ -37,7 +47,7 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
     let x = scrollX - rangeDefault;
     const limit = screenW - listW;
     if (limit > x) {
-      x = limit - 60;
+      x = limit;
     }
     setScrollX(x);
   };
@@ -46,10 +56,16 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
     <div className="movieRow">
       <p className="movieRow--title">{title}</p>
 
-      <div className="movieRow--arrow arrow--left" onClick={handleLeft}>
+      <div
+        className="movieRow--arrow arrow--left"
+        onClick={() => handleArrow("left")}
+      >
         <img src="/img/chevron-left.png" alt="" />
       </div>
-      <div className="movieRow--arrow arrow--right" onClick={handleRight}>
+      <div
+        className="movieRow--arrow arrow--right"
+        onClick={() => handleArrow("right")}
+      >
         <img src="/img/chevron-right.png" alt="" />
       </div>
       <div
@@ -58,7 +74,6 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
           marginLeft: scrollX,
           width: listW,
         }}
-        // onTouchMove={handleDrag}
       >
         {items.results.length > 0 &&
           items.results.map((item, key) => (
@@ -71,7 +86,6 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
                 <img
                   src={base_image + item.poster_path}
                   alt={item.original_title}
-                  // onClick={() => getFeatureItem(item)}
                 />
               </a>
             </div>
