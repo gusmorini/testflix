@@ -1,0 +1,14 @@
+.info {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.info p {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.info--relevance {
+  color: rgb(58 175 87);
+  font-weight: bold;
+}
