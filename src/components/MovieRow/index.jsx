@@ -10,13 +10,6 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
   const [itemW] = useState(180);
   const [listW] = useState(items.results.length * itemW);
 
-  // const screenW = document.querySelector(".movieRow").clientWidth;
-
-  // const [screenW, setScreenW] = useState(
-  //   document.querySelector("#movieRow").clientWidth
-  // );
-  // const [rangeDefault, setRangeDefault] = useState(screenW / 2);
-
   const handleArrow = (arrow = "left") => {
     const screenW = document.querySelector(".movieRow").clientWidth;
     const range = screenW / 2;
@@ -83,6 +76,8 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
                 to={`about/${item.id}/${
                   item.original_title || item.original_name
                 }`}
+                reloadDocument={true}
+                replace={true}
               >
                 <img
                   src={base_image + item.poster_path}

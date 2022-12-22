@@ -37,13 +37,15 @@ const About = () => {
       "https://image.tmdb.org/t/p/original" + feature.backdrop_path
     );
     setPoster("https://image.tmdb.org/t/p/w300" + feature.poster_path);
+
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     if (id && title) {
       getList(id, title);
     }
-  }, []);
+  }, [id, title]);
 
   return (
     <div>
