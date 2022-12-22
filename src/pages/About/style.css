@@ -15,9 +15,6 @@
   left: 0;
 }
 
-.about {
-}
-
 .about .box {
   display: flex;
   flex-direction: column;
@@ -33,6 +30,7 @@
   margin: 0 auto;
   margin-bottom: 2rem;
   height: 350px;
+  margin-top: -90%;
 }
 
 .about hr {
