@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./style.css";
 
 import { getFeature, getSimilar, getRecommendations } from "../../api/Tmdb";
@@ -11,6 +11,7 @@ import MovieTitle from "../../components/MovieTitle";
 import MovieInfo from "../../components/MovieInfo";
 import MovieGenres from "../../components/MovieGenres";
 import MovieList from "../../components/MovieList";
+import Trailer from "../../components/Trailer";
 
 import Loader from "../../components/Loader";
 
@@ -63,12 +64,14 @@ const About = () => {
             src={poster}
             alt={item.original_name || item.original_title}
             className="poster"
+            draggable="false"
           />
           <div className="content">
             <MovieTitle item={item} />
             <MovieInfo item={item} />
             <p className="overview">{item.overview || "..."}</p>
             <MovieGenres item={item} />
+            <Trailer item={item} />
           </div>
         </div>
 

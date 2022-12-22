@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
 const MovieList = ({ items, title }) => {
@@ -16,6 +15,7 @@ const MovieList = ({ items, title }) => {
           <img
             src={base_img + item.poster_path}
             alt={item.title || item.name}
+            draggable="false"
           />
         </a>
       </div>

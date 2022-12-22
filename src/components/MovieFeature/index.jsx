@@ -6,6 +6,7 @@ import MovieTitle from "../MovieTitle";
 import MovieInfo from "../MovieInfo";
 import MovieOverview from "../MovieOverview";
 import Genres from "../MovieGenres";
+import Trailer from "../Trailer";
 
 const MovieFeature = ({ item }) => {
   const url_image = "https://image.tmdb.org/t/p/original" + item.backdrop_path;
@@ -23,6 +24,7 @@ const MovieFeature = ({ item }) => {
           <MovieInfo item={item} />
           <MovieOverview item={item} />
           <Genres item={item} />
+          <Trailer item={item} />
         </div>
       </div>
     </div>
