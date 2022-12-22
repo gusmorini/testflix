@@ -23,6 +23,8 @@ const About = () => {
   const [background, setBackground] = useState("");
   const [poster, setPoster] = useState("");
 
+  const [loader, setLoader] = useState(true);
+
   const getList = async (id, title) => {
     const { feature } = await getFeature(id, title);
 
@@ -39,17 +41,19 @@ const About = () => {
     setPoster("https://image.tmdb.org/t/p/w300" + feature.poster_path);
 
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    setLoader(false);
   };
 
   useEffect(() => {
     if (id && title) {
+      setLoader(true);
       getList(id, title);
     }
   }, [id, title]);
 
   return (
     <div>
-      {!itemSimilar.length > 0 && !background && <Loader />}
+      {loader && <Loader />}
       <Header />
       <div
         className="about--hero"

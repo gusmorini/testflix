@@ -14,6 +14,7 @@ import { randomArray } from "../../helpers/index";
 const Home = () => {
   const [list, setList] = useState([]);
   const [feature, setFeature] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   /** get all items */
   const getAll = async () => {
@@ -33,6 +34,7 @@ const Home = () => {
   const getFeatureItem = async (id, title) => {
     const { feature } = await getFeature(id, title);
     setFeature(feature);
+    setLoader(false);
   };
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const Home = () => {
           />
         ))}
       </section>
-      {list.length <= 0 && !feature && <Loader />}
+      {loader && <Loader />}
       <Footer />
     </div>
   );
