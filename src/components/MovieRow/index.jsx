@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const MovieRow = ({ title, items, getFeatureItem }) => {
@@ -78,8 +79,8 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
         {items.results.length > 0 &&
           items.results.map((item, key) => (
             <div key={key} className="movieRow--item" style={{ width: itemW }}>
-              <a
-                href={`about/${item.id}/${
+              <Link
+                to={`about/${item.id}/${
                   item.original_title || item.original_name
                 }`}
               >
@@ -87,7 +88,7 @@ const MovieRow = ({ title, items, getFeatureItem }) => {
                   src={base_image + item.poster_path}
                   alt={item.original_title}
                 />
-              </a>
+              </Link>
             </div>
           ))}
       </div>
